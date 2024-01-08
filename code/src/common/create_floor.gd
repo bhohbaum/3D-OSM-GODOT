@@ -6,6 +6,6 @@ static func build_floor(caller_node, offset_x, offset_y):
 	floor.polygon = polygon_vectors
 	floor.depth = 0.1
 	floor.use_collision = true
-	floor.rotate(Vector3(1, 0, 0), deg_to_rad(90))
+	floor.call_deferred("rotate", Vector3(1, 0, 0), deg_to_rad(90))
 	floor.translate(Vector3(offset_x, offset_y, 1))
-	caller_node.add_child(floor)
+	caller_node.call_deferred("add_child", floor)

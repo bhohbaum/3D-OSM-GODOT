@@ -33,7 +33,7 @@ static func set_mesh_for_multimesh_instance(poi_multimesh: MultiMeshInstance3D, 
 
 # Function to add the MultiMeshInstance3D to the specified node
 static func add_multimesh_instance_to_node(node, poi_multimesh: MultiMeshInstance3D) -> void:
-	node.add_child(poi_multimesh)
+	node.call_deferred("add_child", poi_multimesh)
 
 # Main function to generate POIs
 static func generate_pois(tile, node, offsetx, offsety) -> void:

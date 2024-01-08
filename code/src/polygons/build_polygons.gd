@@ -13,4 +13,4 @@ static func generate_polygons(
 		polygon.depth = height
 		polygon.use_collision = true
 		polygon.rotate(Vector3(1, 0, 0), deg_to_rad(90))
-		caller_node.add_child(polygon)
+		caller_node.call_deferred("add_child", polygon)

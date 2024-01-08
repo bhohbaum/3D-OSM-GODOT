@@ -1,14 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://beh8eahr3g53c"]
+[gd_scene load_steps=4 format=3 uid="uid://beh8eahr3g53c"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_e256x"]
 [ext_resource type="PackedScene" uid="uid://dgpjxoygnvyy4" path="res://assets/simple_fpsplayer/Player.tscn" id="1_yhjom"]
+[ext_resource type="Script" path="res://src/webserver.gd" id="3_jse5s"]
 
-[node name="main_world" type="Node3D"]
+[node name="main" type="Node3D"]
 script = ExtResource("1_e256x")
 
 [node name="Player" parent="." instance=ExtResource("1_yhjom")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 90.615, 1)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.4892, 0.872172, 0, -0.872172, -0.4892, 0, 268.513, 0)
+transform = Transform3D(1, 0, 0, 0, -0.4892, 0.872172, 0, -0.872172, -0.4892, 0, 0, 0)
+light_intensity_lux = 1000.0
+light_temperature = 3500.0
+light_energy = 0.01
 shadow_enabled = true
+shadow_reverse_cull_face = true
+
+[node name="Webserver" type="Node3D" parent="."]
+script = ExtResource("3_jse5s")
+download_list = PackedStringArray()
+
+[node name="World" type="Node3D" parent="."]

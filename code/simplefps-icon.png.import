@@ -3,30 +3,32 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://docod0tq3xb0k"
-path="res://.godot/imported/simplefps-icon.png-a02f5630f23431b972b09315cd902cef.ctex"
+path.bptc="res://.godot/imported/simplefps-icon.png-a02f5630f23431b972b09315cd902cef.bptc.ctex"
+path.astc="res://.godot/imported/simplefps-icon.png-a02f5630f23431b972b09315cd902cef.astc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://simplefps-icon.png"
-dest_files=["res://.godot/imported/simplefps-icon.png-a02f5630f23431b972b09315cd902cef.ctex"]
+dest_files=["res://.godot/imported/simplefps-icon.png-a02f5630f23431b972b09315cd902cef.bptc.ctex", "res://.godot/imported/simplefps-icon.png-a02f5630f23431b972b09315cd902cef.astc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/lossy_quality=0.7
-compress/hdr_compression=1
+compress/hdr_compression=2
 compress/normal_map=0
-compress/channel_pack=0
-mipmaps/generate=false
+compress/channel_pack=1
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=true
-process/premult_alpha=false
+process/premult_alpha=true
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
