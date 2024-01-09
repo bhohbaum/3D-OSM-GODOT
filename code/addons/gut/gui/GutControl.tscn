@@ -26,21 +26,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Tabs" type="TabContainer" parent="VBox"]
+[node name="TabBar" type="TabContainer" parent="VBox"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Tests" type="Tree" parent="VBox/Tabs"]
+[node name="Tests" type="Tree" parent="VBox/TabBar"]
 layout_mode = 2
 size_flags_vertical = 3
 hide_root = true
 
-[node name="SettingsScroll" type="ScrollContainer" parent="VBox/Tabs"]
+[node name="SettingsScroll" type="ScrollContainer" parent="VBox/TabBar"]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Settings" type="VBoxContainer" parent="VBox/Tabs/SettingsScroll"]
+[node name="Settings" type="VBoxContainer" parent="VBox/TabBar/SettingsScroll"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -58,6 +58,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Run Selected"
 
-[connection signal="item_activated" from="VBox/Tabs/Tests" to="." method="_on_tests_item_activated"]
+[connection signal="item_activated" from="VBox/TabBar/Tests" to="." method="_on_tests_item_activated"]
 [connection signal="pressed" from="VBox/Buttons/RunTests" to="." method="_on_run_tests_pressed"]
 [connection signal="pressed" from="VBox/Buttons/RunSelected" to="." method="_on_run_selected_pressed"]

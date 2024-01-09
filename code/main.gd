@@ -19,12 +19,13 @@ const POLYGON_BUILDER = preload("res://src/polygons/build_polygons.gd")
 const LINESTRING_VECTOR_CALCULATOR = preload(
 	"res://src/linestrings/calculate_linestring_vectors.gd"
 )
-const LINESTRING_BUILDER = preload("res://src/linestrings/build_linestrings.gd")
+const LINESTRING_BUILDER = await preload("res://src/linestrings/build_linestrings.gd")
 const POINTS = preload("res://src/points/pois.gd")
 const FLOOR_BUILDER = preload("res://src/common/create_floor.gd")
 
 @export var preload_distance = 2
 @export var world_nodes = PackedStringArray()
+
 
 @onready var webserver = $Webserver
 @onready var world = $World
@@ -58,7 +59,7 @@ func _ready():
 #loading of initial 4*4 area
 	process_x = START_X
 	process_y = START_Y
-	WorkerThreadPool.add_task(_cleanup_worker)	
+	AppState.worker_thread_id = WorkerThreadPool.add_task(_cleanup_worker)	
 	
 
 func _on_download_completed(success, current_x, current_y, offset_x, offset_y):
@@ -74,22 +75,26 @@ func _on_download_completed(success, current_x, current_y, offset_x, offset_y):
 		if tile_node_current == null:
 			$Webserver.download_file(current_x, current_y, offset_x, offset_y)
 			return
-		WorkerThreadPool.add_task(render_geometries)
+		AppState.worker_thread_id = WorkerThreadPool.add_task(render_geometries)
 	else:
 		print("Download failed or timed out.")
-	$Webserver.busy = false
+	#AppState.busy = false
 
 func render_geometries():
-	var tilepath = "res://tiles/" + str(current_x) + str(current_y)
+	var tilepath = AppState.tiles_storage + str(current_x) + str(current_y)
 	var tile = MVT_READER.load_tile(tilepath)
 
-	var current_tile_node_path = str(current_x) + str(current_y)
+	#var current_tile_node_path = str(current_x) + str(current_y)
 
 	FLOOR_BUILDER.build_floor(tile_node_current, offset_x, offset_y)
 
 	for layer in tile.layers():
+		print("Layer " + layer.name() + "\n")
 		if layer.name() == CONSTANTS.HIGHWAYS:
 			for feature in layer.features():
+				for i in range(0, feature.tags(layer).size(), 1):
+					print_debug(feature.tags(layer))
+					print("\n")
 				var width = null
 				if feature.tags(layer).has("pathType"):
 					if CONSTANTS.WIDTHS.has(feature.tags(layer).pathType):
@@ -218,7 +223,8 @@ func _process(delta):
 	else:
 		tile_distance_x = int($Player.position.x / CONSTANTS.OFFSET)
 		tile_distance_y = int($Player.position.z / CONSTANTS.OFFSET)
-		WorkerThreadPool.add_task(_load)
+		if !AppState.busy:
+			AppState.worker_thread_id = WorkerThreadPool.add_task(_load)
 
 
 func _load():
@@ -232,16 +238,16 @@ func _load():
 
 		for i in range(-2, 2, 1):
 			var tile_node = Node3D.new()
-			world.call_deferred("add_child", tile_node)
+			await world.call_deferred("add_child", tile_node)
 			tile_node.name = str(process_x) + str(process_y + i)
-			webserver.call_deferred("download_file",
+			await webserver.call_deferred("download_file",
 				process_x,
 				process_y + i,
 				CONSTANTS.OFFSET * (tiles_loaded_x_max - 1),
 				CONSTANTS.OFFSET * (i + steps_y)
 			)
 
-			world.call_deferred("remove_child", world.call_deferred("get_node", str(process_x + i) + str(process_y + 4)))
+			await world.call_deferred("remove_child", await world.call_deferred("get_node", str(process_x + i) + str(process_y + 4)))
 
 		process_x = process_x - 1
 
@@ -255,16 +261,16 @@ func _load():
 
 		for i in range(-2, 2, 1):
 			var tile_node = Node3D.new()
-			world.call_deferred("add_child", tile_node)
+			await world.call_deferred("add_child", tile_node)
 			tile_node.name = str(process_x) + str(process_y + i)
-			webserver.call_deferred("download_file",
+			await webserver.call_deferred("download_file",
 				process_x,
 				process_y + i,
 				CONSTANTS.OFFSET * (tiles_loaded_x_min),
 				CONSTANTS.OFFSET * (i + steps_y)
 			)
 
-			world.call_deferred("remove_child", world.call_deferred("get_node", str(process_x + i) + str(process_y + 4)))
+			await world.call_deferred("remove_child", await world.call_deferred("get_node", str(process_x + i) + str(process_y + 4)))
 
 		process_x = process_x + 2
 
@@ -278,16 +284,16 @@ func _load():
 
 		for i in range(-2, 2, 1):
 			var tile_node = Node3D.new()
-			world.call_deferred("add_child", tile_node)
+			await world.call_deferred("add_child", tile_node)
 			tile_node.name = str(process_x + i) + str(process_y)
-			webserver.call_deferred("download_file",
+			await webserver.call_deferred("download_file",
 				process_x + i,
 				process_y,
 				CONSTANTS.OFFSET * (i + steps_x),
 				CONSTANTS.OFFSET * (tiles_loaded_y_max - 1)
 			)
 
-			world.call_deferred("remove_child", world.call_deferred("get_node", str(process_x + i) + str(process_y + 4)))
+			await world.call_deferred("remove_child", await world.call_deferred("get_node", str(process_x + i) + str(process_y + 4)))
 
 		process_y = process_y - 1
 
@@ -301,21 +307,22 @@ func _load():
 
 		for i in range(-2, 2, 1):
 			var tile_node = Node3D.new()
-			world.call_deferred("add_child", tile_node)
+			await world.call_deferred("add_child", tile_node)
 			tile_node.name = str(process_x + i) + str(process_y)
-			webserver.call_deferred("download_file",
+			await webserver.call_deferred("download_file",
 				process_x + i,
 				process_y,
 				CONSTANTS.OFFSET * (i + steps_x),
 				CONSTANTS.OFFSET * tiles_loaded_y_min
 			)
 
-			world.call_deferred("remove_child", world.call_deferred("get_node", str(process_x + i) + str(process_y + 4)))
+			await world.call_deferred("remove_child", await world.call_deferred("get_node", str(process_x + i) + str(process_y + 4)))
 
 		process_y = process_y + 2
-	
+
 	
 func _cleanup_worker():
 	for node in world_nodes:
 		if str(int(node.name)) != node.name:
+			WorkerThreadPool.wait_for_task_completion(AppState.worker_thread_id)
 			world.call_deferred("remove_child", node)

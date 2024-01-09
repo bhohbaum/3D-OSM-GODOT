@@ -12,5 +12,5 @@ static func generate_polygons(
 		var polygon = CREATE_CSGPOLYGON3D.create_polygon(color, vactors_with_offset)
 		polygon.depth = height
 		polygon.use_collision = true
-		polygon.rotate(Vector3(1, 0, 0), deg_to_rad(90))
-		caller_node.call_deferred("add_child", polygon)
+		await polygon.call_deferred("rotate", Vector3(1, 0, 0), deg_to_rad(90))
+		await caller_node.call_deferred("add_child", polygon)

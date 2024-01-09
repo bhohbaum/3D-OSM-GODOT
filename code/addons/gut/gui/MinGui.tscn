@@ -101,7 +101,7 @@ clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Path" type="Label" parent="MainBox/Body/BodyRows/PathDisplay"]
+[node name="Path3D" type="Label" parent="MainBox/Body/BodyRows/PathDisplay"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_a2e2l")
 theme_override_font_sizes/font_size = 14

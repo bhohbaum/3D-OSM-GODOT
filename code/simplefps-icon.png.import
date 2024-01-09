@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://docod0tq3xb0k"
-path.bptc="res://.godot/imported/simplefps-icon.png-a02f5630f23431b972b09315cd902cef.bptc.ctex"
-path.astc="res://.godot/imported/simplefps-icon.png-a02f5630f23431b972b09315cd902cef.astc.ctex"
+path.bptc="res://godot/imported/simplefps-icon.png-a02f5630f23431b972b09315cd902cef.bptc.ctex"
+path.astc="res://godot/imported/simplefps-icon.png-a02f5630f23431b972b09315cd902cef.astc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -13,7 +13,7 @@ metadata={
 [deps]
 
 source_file="res://simplefps-icon.png"
-dest_files=["res://.godot/imported/simplefps-icon.png-a02f5630f23431b972b09315cd902cef.bptc.ctex", "res://.godot/imported/simplefps-icon.png-a02f5630f23431b972b09315cd902cef.astc.ctex"]
+dest_files=["res://godot/imported/simplefps-icon.png-a02f5630f23431b972b09315cd902cef.bptc.ctex", "res://godot/imported/simplefps-icon.png-a02f5630f23431b972b09315cd902cef.astc.ctex"]
 
 [params]
 

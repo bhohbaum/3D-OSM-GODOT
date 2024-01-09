@@ -1,0 +1,28 @@
+<lint-module
+    format="1"
+    dir="/home/botho/git/godot-projects/3D-OSM-GODOT/code/android/build"
+    name=":"
+    type="APP"
+    maven=":build:"
+    gradle="7.2.1"
+    buildFolder="build"
+    bootClassPath="/home/botho/Android/Sdk/platforms/android-33/android.jar:/home/botho/Android/Sdk/build-tools/33.0.2/core-lambda-stubs.jar"
+    javaSourceLevel="17"
+    compileTarget="android-33"
+    neverShrinking="true">
+  <lintOptions
+      disable="MissingTranslation,UnusedResources"
+      absolutePaths="true"
+      checkReleaseBuilds="true"
+      explainIssues="true">
+    <severities>
+      <severity
+        id="MissingTranslation"
+        severity="IGNORE" />
+      <severity
+        id="UnusedResources"
+        severity="IGNORE" />
+    </severities>
+  </lintOptions>
+  <variant name="release"/>
+</lint-module>

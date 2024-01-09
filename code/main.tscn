@@ -1,14 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://beh8eahr3g53c"]
+[gd_scene load_steps=6 format=3 uid="uid://beh8eahr3g53c"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_e256x"]
 [ext_resource type="PackedScene" uid="uid://dgpjxoygnvyy4" path="res://assets/simple_fpsplayer/Player.tscn" id="1_yhjom"]
+[ext_resource type="Environment" uid="uid://dgwki8y1f6sbc" path="res://addons/SunshineVolumetricClouds/ExampleWorldEnvironment.tres" id="2_v2wb1"]
 [ext_resource type="Script" path="res://src/webserver.gd" id="3_jse5s"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_jelb6"]
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_e256x")
+world_nodes = PackedStringArray()
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_v2wb1")
+camera_attributes = SubResource("CameraAttributesPractical_jelb6")
 
 [node name="Player" parent="." instance=ExtResource("1_yhjom")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 90.615, 1)
+metadata/_edit_lock_ = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.4892, 0.872172, 0, -0.872172, -0.4892, 0, 0, 0)
@@ -17,9 +26,16 @@ light_temperature = 3500.0
 light_energy = 0.01
 shadow_enabled = true
 shadow_reverse_cull_face = true
+directional_shadow_blend_splits = true
+metadata/_edit_lock_ = true
 
 [node name="Webserver" type="Node3D" parent="."]
 script = ExtResource("3_jse5s")
 download_list = PackedStringArray()
+metadata/_edit_lock_ = true
 
 [node name="World" type="Node3D" parent="."]
+process_thread_group = 2
+process_thread_group_order = 0
+process_thread_messages = 3
+metadata/_edit_lock_ = true
