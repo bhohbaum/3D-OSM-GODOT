@@ -2,12 +2,13 @@
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_7o76k"]
 noise_type = 0
-frequency = 0.0904
+frequency = 1.0
 fractal_lacunarity = 3.06
 fractal_gain = 0.15
 domain_warp_type = 1
 
 [resource]
+invert = true
 seamless = true
 seamless_blend_skirt = 0.4
 normalize = false

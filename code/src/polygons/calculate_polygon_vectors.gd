@@ -23,7 +23,7 @@ static func build_polygon_geometries(feature_geometry: Array) -> Array:
 	for i in range (0, feature_geometry.size(), 3):
 		var current_geometry = []
 		feature_geometry[i].remove_at(0)
-		if feature_geometry.size() <= i:
+		if feature_geometry.size() <= 1:
 			return sanitized_geometries
 		feature_geometry[i+1].remove_at(0)
 

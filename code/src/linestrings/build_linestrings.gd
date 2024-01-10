@@ -26,7 +26,7 @@ static func generate_paths(path_points, caller_node, color, offset_x, offset_y, 
 	for path in path_points:
 		var path3d = create_path3d(path, offset_x, offset_y)
 		await caller_node.call_deferred("add_child", path3d)
-
+		#await caller_node.call_deferred("add_child", Thread.new().start(await caller_node.call_deferred.bind(path3d)))
 
 		var polygon: CSGPolygon3D = CREATE_CSGPOLYGON3D.create_polygon(color, path_polygon)
 		polygon.mode = CSGPolygon3D.MODE_PATH
@@ -35,5 +35,6 @@ static func generate_paths(path_points, caller_node, color, offset_x, offset_y, 
 		if polygon != null && polygon.get_indexed("path") != null && path3d != null:
 			var pc: Path3D = path3d
 			await polygon.call_deferred("_set", "path", Thread.new().start(await pc.call_deferred.bind("get_path")))
-			await caller_node.call_deferred("add_child", Thread.new().start(await caller_node.call_deferred.bind(polygon)))
+			await caller_node.call_deferred("add_child", polygon)
+			#await caller_node.call_deferred("add_child", Thread.new().start(await caller_node.call_deferred.bind(polygon)))
 

@@ -6,11 +6,14 @@ extends VehicleBody3D
 var steer_target = 0
 @export var engine_force_value = 40
 
+func _ready() -> void:
+	freeze()
+	
 
 func _physics_process(delta):
 	var speed = linear_velocity.length()*Engine.get_frames_per_second()*delta
 	traction(speed)
-	$Hud/speed.text=str(round(speed*3.8))+"  KMPH"
+	$Hud/speed.text=str(round(speed*3.8))+"  Km/h"
 
 	var fwd_mps = transform.basis.x.x
 	steer_target = Input.get_action_strength("ui_left") - Input.get_action_strength("ui_right")
@@ -51,5 +54,10 @@ func traction(speed):
 	apply_central_force(Vector3.DOWN*speed)
 
 
+func freeze():
+	set_process(false)
+
+func unfreeze():
+	set_process(true)
 
 

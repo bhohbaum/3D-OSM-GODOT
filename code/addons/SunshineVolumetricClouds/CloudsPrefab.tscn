@@ -13,6 +13,7 @@ size = Vector2(2, 2)
 
 [node name="CloudsSystem" type="Node"]
 script = ExtResource("1_tewmo")
+updateConstantly = true
 gradientControlTexture = ExtResource("2_bwd87")
 baseNoiseTexture = ExtResource("3_foyfo")
 detailNoiseTexture = ExtResource("4_q62vm")

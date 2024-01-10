@@ -1,15 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://beh8eahr3g53c"]
+[gd_scene load_steps=7 format=3 uid="uid://beh8eahr3g53c"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_e256x"]
 [ext_resource type="PackedScene" uid="uid://dgpjxoygnvyy4" path="res://assets/simple_fpsplayer/Player.tscn" id="1_yhjom"]
 [ext_resource type="Environment" uid="uid://dgwki8y1f6sbc" path="res://addons/SunshineVolumetricClouds/ExampleWorldEnvironment.tres" id="2_v2wb1"]
 [ext_resource type="Script" path="res://src/webserver.gd" id="3_jse5s"]
+[ext_resource type="PackedScene" uid="uid://ci52bv1m15cbs" path="res://cars/Doge.tscn" id="5_0lghc"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_jelb6"]
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_e256x")
-world_nodes = PackedStringArray()
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_v2wb1")
@@ -17,6 +17,7 @@ camera_attributes = SubResource("CameraAttributesPractical_jelb6")
 
 [node name="Player" parent="." instance=ExtResource("1_yhjom")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 90.615, 1)
+visible = false
 metadata/_edit_lock_ = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -39,3 +40,14 @@ process_thread_group = 2
 process_thread_group_order = 0
 process_thread_messages = 3
 metadata/_edit_lock_ = true
+
+[node name="car" parent="." instance=ExtResource("5_0lghc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.44297, 0)
+mass = 1000.0
+center_of_mass = Vector3(0, -0.1, -1.07)
+inertia = Vector3(1, 1, 1)
+freeze = true
+continuous_cd = true
+engine_force = 1024.0
+brake = 128.0
+engine_force_value = 1500
