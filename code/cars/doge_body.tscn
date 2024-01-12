@@ -1,0 +1,107 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7nxa8impd3kf"]
+
+[ext_resource type="PackedScene" uid="uid://bty2rpvw2dh0h" path="res://cars/Models/Doge/doge-body.glb" id="1_bnq0a"]
+
+[node name="doge-body" instance=ExtResource("1_bnq0a")]
+
+[node name="Body" parent="." index="0"]
+gi_mode = 2
+
+[node name="Grill" parent="." index="1"]
+gi_mode = 2
+
+[node name="Splitter_Front" parent="." index="3"]
+gi_mode = 2
+
+[node name="Bumper_rear" parent="." index="4"]
+gi_mode = 2
+
+[node name="Hood" parent="." index="5"]
+gi_mode = 2
+
+[node name="Door_FL" parent="." index="6"]
+gi_mode = 2
+
+[node name="Trunkdoor" parent="." index="7"]
+gi_mode = 2
+
+[node name="Doorglass_FL" parent="." index="8"]
+gi_mode = 2
+
+[node name="Windshield" parent="." index="9"]
+gi_mode = 2
+
+[node name="Hood_inner" parent="." index="10"]
+gi_mode = 2
+
+[node name="Taillights" parent="." index="11"]
+gi_mode = 2
+
+[node name="Suspension_front" parent="." index="12"]
+gi_mode = 2
+
+[node name="Bottom" parent="." index="13"]
+gi_mode = 2
+
+[node name="Taillights_glass_reverse" parent="." index="14"]
+gi_mode = 2
+
+[node name="Headlights_glass" parent="." index="15"]
+gi_mode = 2
+
+[node name="Turnsignals_glass" parent="." index="16"]
+gi_mode = 2
+
+[node name="Badges_body" parent="." index="17"]
+gi_mode = 2
+
+[node name="Badges_hood" parent="." index="18"]
+gi_mode = 2
+
+[node name="Exhaust" parent="." index="19"]
+gi_mode = 2
+
+[node name="Numberplate_rear" parent="." index="20"]
+gi_mode = 2
+
+[node name="Dashboard" parent="." index="21"]
+gi_mode = 2
+
+[node name="Seats" parent="." index="22"]
+gi_mode = 2
+
+[node name="Doorcard_FL" parent="." index="23"]
+gi_mode = 2
+
+[node name="Door_inner_FL" parent="." index="24"]
+gi_mode = 2
+
+[node name="Interior" parent="." index="25"]
+gi_mode = 2
+
+[node name="Trunkdoor_inner" parent="." index="26"]
+gi_mode = 2
+
+[node name="Engine_Plarts_muscle" parent="." index="27"]
+gi_mode = 2
+
+[node name="Taillights_glass_brakelights" parent="." index="28"]
+gi_mode = 2
+
+[node name="Glass_rear" parent="." index="29"]
+gi_mode = 2
+
+[node name="Door_FR" parent="." index="30"]
+gi_mode = 2
+
+[node name="Door_inner_FR" parent="." index="31"]
+gi_mode = 2
+
+[node name="Doorcard_FR" parent="." index="32"]
+gi_mode = 2
+
+[node name="Doorglass_FR" parent="." index="33"]
+gi_mode = 2
+
+[node name="Stear" parent="." index="34"]
+gi_mode = 2

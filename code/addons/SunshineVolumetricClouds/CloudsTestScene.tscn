@@ -78,7 +78,6 @@ fov = 90.0
 far = 15000.0
 
 [node name="CloudsSystem" parent="." node_paths=PackedStringArray("sunLight", "worldEnvironment") instance=ExtResource("3_rcng6")]
-updateConstantly = true
 sunLight = NodePath("../DirectionalLight3D")
 worldEnvironment = NodePath("../WorldEnvironment")
 windSpeed = 0.01

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb48wuhv83ph0"]
+
+[ext_resource type="Environment" uid="uid://dgwki8y1f6sbc" path="res://addons/SunshineVolumetricClouds/ExampleWorldEnvironment.tres" id="1_o7sob"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_jelb6"]
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = ExtResource("1_o7sob")
+camera_attributes = SubResource("CameraAttributesPractical_jelb6")

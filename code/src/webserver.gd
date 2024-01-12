@@ -10,8 +10,8 @@ extends Node
 @export var http_request = HTTPRequest.new()
 @export var download_list = PackedStringArray()
 @export var download_http = "https://tiles.streets.gl/vector/16/"
-@export var download_local = AppState.tiles_storage
-@export var busy = AppState.busy
+@export var download_local: StringName
+@export var busy: bool
 		
 
 
@@ -19,6 +19,8 @@ signal download_completed(success, x, y, offset_x, offset_y)
 
 
 func _ready() -> void:
+	busy = AppState.busy
+	download_local = AppState.tiles_storage
 	AppState.busy = false
 	http_request.use_threads = true
 	http_request.request_completed.connect(_on_request_completed)
@@ -30,9 +32,10 @@ func download_file(x, y, offset_x, offset_y):
 	download_list.append(json)
 
 func _process(delta: float) -> void:
-	AppState.busy = download_list.size() > 2
-#	if AppState.busy:
-#		return
+	#AppState.busy = download_list.size() > 2
+	busy = AppState.busy
+	if AppState.busy:
+		return
 	if http_request.get_http_client_status() != HTTPClient.STATUS_DISCONNECTED:
 		return
 	var json = null

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqo5ee55josdb"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_8ojna"]
+
+[node name="World" type="Node3D"]
+process_thread_group = 2
+process_thread_group_order = 0
+process_thread_messages = 3
+script = ExtResource("1_8ojna")

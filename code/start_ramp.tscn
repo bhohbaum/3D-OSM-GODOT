@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1ff48d4io05e"]
+
+[ext_resource type="Texture2D" uid="uid://bsmcpupaj02v8" path="res://addons/simplegrasstextured/sgt_icon.svg" id="1_h0g0q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2lqty"]
+albedo_texture = ExtResource("1_h0g0q")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_po4be"]
+albedo_texture = ExtResource("1_h0g0q")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p8845"]
+albedo_texture = ExtResource("1_h0g0q")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5egx"]
+albedo_texture = ExtResource("1_h0g0q")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D"]
+material_override = SubResource("StandardMaterial3D_2lqty")
+material_overlay = SubResource("StandardMaterial3D_po4be")
+gi_mode = 2
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.971087, 4.20529, 2.43365)
+material_override = SubResource("StandardMaterial3D_p8845")
+transparency = 0.27
+size = Vector3(9.46136, 1, 16.298)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.922066, -0.387033, 0, 0.387033, 0.922066, -0.971087, -72.3912, 192.933)
+material_override = SubResource("StandardMaterial3D_h5egx")
+transparency = 0.27
+size = Vector3(9.46136, 1, 395.961)

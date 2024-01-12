@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://185tnbu0ouv"]
+
+[ext_resource type="PackedScene" uid="uid://ci52bv1m15cbs" path="res://cars/Doge.tscn" id="1_wkhcu"]
+
+[node name="car" instance=ExtResource("1_wkhcu")]
+STEER_SPEED = 1.5
+
+[node name="wheal2" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.997421, 0.282103, 1.26411)
+
+[node name="SpotLight3D" parent="." index="10"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.658172, 0.609211, 2.01651)
+
+[node name="SpotLight3D2" parent="." index="11"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.670821, 0.609211, 2.01651)
+
+[node name="doge-body2" parent="." index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.258947)
+
+[node name="CSGSphere3D3" parent="doge-body2" index="35"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.666929, 0.605401, 2.20375)
+
+[node name="CSGSphere3D4" parent="doge-body2" index="36"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.650387, 0.606998, 2.20375)

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://daki3bxwmctjq"]
+
+[ext_resource type="PackedScene" uid="uid://bn2a82ynraqtj" path="res://gltf/start_ramp.gltf" id="1_j2bal"]
+
+[node name="CSGCombiner3D5" instance=ExtResource("1_j2bal")]
